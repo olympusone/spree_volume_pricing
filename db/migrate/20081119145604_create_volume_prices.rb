@@ -1,4 +1,4 @@
-class CreateVolumePrices < SpreeExtension::Migration[4.2]
+class CreateVolumePrices < ActiveRecord::Migration[6.1]
   def self.up
     create_table :volume_prices do |t|
       t.references :variant
