@@ -1,0 +1,20 @@
+---
+el:
+  spree:
+    each: έκαστος
+    save: Αποθήκευση
+    add_volume_price: Προσθήκη Τιμής
+    position: Θέση
+    discount_type: Τύπος Έκπτωσης
+    range: Εύρος
+    volume_prices: Τιμές ανα ποσότητα
+    volume_pricing: Τιμές Ποσότητας
+    price_discount: Τιμή Έκπτωσης
+    percent_discount: Ποσοστό Έκπτωσης
+    bulk_discount: Μαζική Έκπτωση
+  activerecord:
+    errors:
+      messages:
+        could_not_conver_to_range: "Άδυνατη μετατροπή εύρους: %{number}"
+        is_not_a_valid_volume_price_type: '%{value} δεν είναι έγκυρος τύπος'
+        must_be_in_format: 'πρέπει να είναι σύμφωνα με ένα απο τα ακόλουθα παραδείγματα: (a..b), (a...b), (a+)'

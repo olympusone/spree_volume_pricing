@@ -4,6 +4,11 @@ module SpreeVolumePricing
     isolate_namespace Spree
     engine_name 'spree_volume_pricing'
 
+    # use rspec for tests
+    config.generators do |g|
+      g.test_framework :rspec
+    end
+
     initializer 'spree_volume_pricing.preferences', before: 'spree.environment' do
       Spree::AppConfiguration.class_eval do
         preference :use_master_variant_volume_pricing, :boolean, default: false
@@ -38,7 +43,6 @@ module SpreeVolumePricing
       end
     end
 
-    config.autoload_paths += %W(#{config.root}/lib)
     config.to_prepare(&method(:activate).to_proc)
   end
 end
