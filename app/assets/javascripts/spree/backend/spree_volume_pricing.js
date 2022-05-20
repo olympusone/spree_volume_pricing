@@ -28,9 +28,6 @@ $(function () {
 
         $(target).prepend(newTableRow);
 
-        $('select.select2', newTableRow).select2({
-            allowClear: true,
-            dropdownAutoWidth: true
-        });
+        $('select.select2', newTableRow).select2();
     });
 });
