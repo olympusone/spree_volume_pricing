@@ -1,5 +1,5 @@
 module SpreeVolumePricing
-  VERSION = '1.0.0'.freeze
+  VERSION = '3.3.2'.freeze
 
   module_function
 
