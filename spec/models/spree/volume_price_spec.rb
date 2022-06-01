@@ -1,7 +1,6 @@
 RSpec.describe Spree::VolumePrice, type: :model do
   it { is_expected.to belong_to(:variant).touch(true).optional }
   it { is_expected.to belong_to(:volume_price_model).touch(true).optional }
-  it { is_expected.to belong_to(:spree_role).class_name('Spree::Role').with_foreign_key('role_id').optional }
   it { is_expected.to validate_presence_of(:discount_type) }
   # TODO: Doesn't pass because of other validations. Needs to be solved.
   # it { is_expected.to validate_inclusion_of(:discount_type).in_array(%w(price dollar percent)) }

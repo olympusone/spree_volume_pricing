@@ -9,39 +9,29 @@ module Spree::VariantDecorator
       }
   end
 
-  def join_volume_prices(user = nil)
+  def join_volume_prices
     table = Spree::VolumePrice.arel_table
 
-    if user
-      Spree::VolumePrice.where(
-        (table[:variant_id].eq(id)
-          .or(table[:volume_price_model_id].in(volume_price_models.ids)))
-          .and(table[:role_id].eq(user.resolve_role.try(:id)))
-        )
-        .order(position: :asc)
-    else
-      Spree::VolumePrice.where(
-        (table[:variant_id]
-          .eq(id)
-          .or(table[:volume_price_model_id].in(volume_price_models.ids)))
-          .and(table[:role_id].eq(nil))
-        ).order(position: :asc)
-    end
+    Spree::VolumePrice.where(
+      (table[:variant_id]
+        .eq(id)
+        .or(table[:volume_price_model_id].in(volume_price_models.ids)))
+      ).order(position: :asc)
   end
 
   # calculates the price based on quantity
-  def volume_price(quantity, user = nil)
-    compute_volume_price_quantities :volume_price, price, quantity, user
+  def volume_price(quantity)
+    compute_volume_price_quantities :volume_price, price, quantity
   end
 
   # return percent of earning
-  def volume_price_earning_percent(quantity, user = nil)
-    compute_volume_price_quantities :volume_price_earning_percent, 0, quantity, user
+  def volume_price_earning_percent(quantity)
+    compute_volume_price_quantities :volume_price_earning_percent, 0, quantity
   end
 
   # return amount of earning
-  def volume_price_earning_amount(quantity, user = nil)
-    compute_volume_price_quantities :volume_price_earning_amount, 0, quantity, user
+  def volume_price_earning_amount(quantity)
+    compute_volume_price_quantities :volume_price_earning_amount, 0, quantity
   end
 
   protected
@@ -50,12 +40,12 @@ module Spree::VariantDecorator
     Spree::Config.use_master_variant_volume_pricing && !(product.master.join_volume_prices.count == 0)
   end
 
-  def compute_volume_price_quantities(type, default_price, quantity, user)
-    volume_prices = join_volume_prices user
+  def compute_volume_price_quantities(type, default_price, quantity)
+    volume_prices = join_volume_prices
 
     if volume_prices.count == 0
       if use_master_variant_volume_pricing? && !is_master
-        return product.master.send(type, quantity, user)
+        return product.master.send(type, quantity)
       else
         return default_price
       end
