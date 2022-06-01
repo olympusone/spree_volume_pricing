@@ -8,7 +8,7 @@ module Spree::LineItemDecorator
     if changed?
       vprice = variant.volume_price(quantity, order.user)
 
-      if self.price? && vprice <= variant.price
+      if vprice && vprice <= variant.price
         self.price = vprice and return
       end
     end
