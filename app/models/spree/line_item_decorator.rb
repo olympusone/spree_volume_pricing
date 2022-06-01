@@ -1,21 +1,19 @@
 module Spree::LineItemDecorator
-  def self.prepended(base)
-    old_copy_price = base.instance_method(:copy_price)
+  def copy_price
+    super
+    return unless variant
 
-    define_method(:copy_price) do
-      old_copy_price.bind(self).call
-      return unless variant
+    # TODO make it work only when quantity changed
+    # ex. changes.keys.include?('quantity')
+    if changed?
+      vprice = variant.volume_price(quantity, order.user)
 
-      if changed?
-        vprice = variant.volume_price(quantity, order.user)
-
-        if self.price? && vprice <= variant.price
-          self.price = vprice and return
-        end
+      if self.price? && vprice <= variant.price
+        self.price = vprice and return
       end
-
-      self.price = variant.price if self.price.nil?
     end
+
+    self.price = variant.price if self.price.nil?
   end
 end
 
