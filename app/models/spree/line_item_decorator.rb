@@ -5,13 +5,13 @@ module Spree::LineItemDecorator
 
     # TODO make it work only when quantity changed
     # ex. changes.keys.include?('quantity')
-    # if changed?
+    if changed?
       vprice = variant.volume_price(quantity, order.user)
 
       if vprice && vprice <= variant.price
         self.price = vprice and return
       end
-    # end
+    end
 
     self.price = variant.price if self.price.nil?
   end
