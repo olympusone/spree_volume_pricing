@@ -6,7 +6,7 @@ module Spree::LineItemDecorator
       old_copy_price.bind(self).call
       return unless variant
 
-      if changed?
+      if changed? && changes.keys.include?('quantity')
         vprice = variant.volume_price(quantity, order.user)
 
         if self.price? && vprice <= variant.price
