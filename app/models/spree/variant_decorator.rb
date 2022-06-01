@@ -55,7 +55,7 @@ module Spree::VariantDecorator
 
     if volume_prices.count == 0
       if use_master_variant_volume_pricing?
-        product.master.send(type, quantity, user)
+        return product.master.send(type, quantity, user)
       else
         return default_price
       end
