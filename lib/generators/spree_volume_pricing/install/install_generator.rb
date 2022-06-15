@@ -8,7 +8,7 @@ module SpreeVolumePricing
       end
 
       def add_migrations
-        run 'bundle exec rake railties:install:migrations FROM=spree_eurobank_payment'
+        run 'bundle exec rake railties:install:migrations FROM=spree_volume_pricing'
       end
 
       def run_migrations
