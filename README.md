@@ -1,18 +1,17 @@
 # Volume Pricing
 
-[![Build Status](https://travis-ci.com/spree-contrib/spree_volume_pricing.svg?branch=master)](https://travis-ci.com/spree-contrib/spree_volume_pricing)
-[![Code Climate](https://codeclimate.com/github/spree-contrib/spree_volume_pricing/badges/gpa.svg)](https://codeclimate.com/github/spree-contrib/spree_volume_pricing)
+[![Maintainability](https://api.codeclimate.com/v1/badges/a48443137b8a374b4587/maintainability)](https://codeclimate.com/github/olympusone/spree_volume_pricing/maintainability)
 
 Volume Pricing is an extension to Spree (a complete open source commerce solution for Ruby on Rails) that uses predefined ranges of quantities to determine the price for a particular product variant.  For instance, this allows you to set a price for quantities between 1-10, another price for quantities between (10-100) and another for quantities of 100 or more.  If no volume price is defined for a variant, then the standard price is used.
 
 Each VolumePrice contains the following values:
 
 1. **Variant:** Each VolumePrice is associated with a _Variant_, which is used to link products to particular prices.
-1. **Name:** The human readable representation of the quantity range (Ex. 10-100).  (Optional)
-1. **Discount Type** The type of discount to apply.  **Price:** sets price to the amount specified. **Dollar:** subtracts specified amount from the Variant price.  **Percent:** subtracts the specified amounts percentage from the Variant price.
-1. **Range:** The quantity range for which the price is valid (See Below for Examples of Valid Ranges.)
-1. **Amount:** The price of the product if the line item quantity falls within the specified range.
-1. **Position:** Integer value for `acts_as_list` (Helps keep the volume prices in a defined order.)
+2. **Name:** The human readable representation of the quantity range (Ex. 10-100).  (Optional)
+3. **Discount Type** The type of discount to apply.  **Price:** sets price to the amount specified. **Dollar:** subtracts specified amount from the Variant price.  **Percent:** subtracts the specified amounts percentage from the Variant price.
+4. **Range:** The quantity range for which the price is valid (See Below for Examples of Valid Ranges.)
+5. **Amount:** The price of the product if the line item quantity falls within the specified range.
+6. **Position:** Integer value for `acts_as_list` (Helps keep the volume prices in a defined order.)
 
 ---
 
@@ -21,7 +20,7 @@ Each VolumePrice contains the following values:
 Add in your `Gemfile`:
 
 ```ruby
-gem 'spree_volume_pricing', github: 'spree-contrib/spree_volume_pricing'
+gem 'spree_volume_pricing', github: 'olympusone/spree_volume_pricing'
 ```
 (run `bundle install`)
 
@@ -100,7 +99,7 @@ Cart Contents:
 
 ## Additional Notes
 
-* The volume price is applied based on the total quantity ordered for a particular variant.  It does not apply different prices for the portion of the quantity that falls within a particular range. Only the one price is used (although this would be an interesting configurable option if someone wanted to write a patch.)
+The volume price is applied based on the total quantity ordered for a particular variant.  It does not apply different prices for the portion of the quantity that falls within a particular range. Only the one price is used (although this would be an interesting configurable option if someone wanted to write a patch.)
 
 ---
 
@@ -112,9 +111,9 @@ See corresponding [contributing guidelines][1].
 
 ## License
 
-Copyright (c) 2009-2021 [Spree Commerce][2] and [contributors][3], released under the [New BSD License][4]
+Copyright (c) 2009-2022 [Spree Commerce][2] and [contributors][3], released under the [New BSD License][4]
 
-[1]: https://github.com/spree-contrib/spree_volume_pricing/blob/master/CONTRIBUTING.md
+[1]: https://github.com/olympusone/spree_volume_pricing/blob/master/CONTRIBUTING.md
 [2]: https://github.com/spree
-[3]: https://github.com/spree-contrib/spree_volume_pricing/graphs/contributors
-[4]: https://github.com/spree-contrib/spree_volume_pricing/blob/master/LICENSE.md
+[3]: https://github.com/olympusone/spree_volume_pricing/graphs/contributors
+[4]: https://github.com/olympusone/spree_volume_pricing/blob/master/LICENSE.md
