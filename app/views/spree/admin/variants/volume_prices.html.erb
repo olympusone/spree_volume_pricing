@@ -4,7 +4,7 @@
   <%= button_link_to(
     Spree.t(:add_volume_price),
     "javascript:;",
-    { icon: 'add.svg', 'data-target': "#volume_prices tbody", class: 'btn-success spree_add_fields' }) %>
+    { icon: 'add.svg', 'data-target': "#volume_prices tbody", class: 'btn-success spree_add_fields', id: 'add_volume_price' }) %>
 <% end %>
 <%= form_for(@variant, url: admin_product_variant_path(@product, @variant), method: :put) do |f| %>
   <h3><%= Spree.t(:volume_prices) %></h3>

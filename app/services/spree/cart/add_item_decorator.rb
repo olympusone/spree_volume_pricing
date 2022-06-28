@@ -15,8 +15,8 @@ if Spree.version.to_f > 3.7
         end.merge(currency: order.currency).delete_if { |_key, value| value.nil? }
 
         line_item = order.line_items.new(quantity: quantity,
-                                          variant: variant,
-                                          options: opts)
+                                         variant: variant,
+                                         options: opts)
       else
         line_item.quantity += quantity.to_i
       end
@@ -25,7 +25,9 @@ if Spree.version.to_f > 3.7
 
       return failure(line_item) unless line_item.save
 
-      ::Spree::TaxRate.adjust(order, [line_item.reload]) if line_item_created
+      line_item.reload.update_price
+
+      ::Spree::TaxRate.adjust(order, [line_item]) if line_item_created
       success(order: order, line_item: line_item, line_item_created: line_item_created, options: options)
     end
   end
