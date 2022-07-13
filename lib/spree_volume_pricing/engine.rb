@@ -9,6 +9,10 @@ module SpreeVolumePricing
       g.test_framework :rspec
     end
 
+    initializer 'spree_volume_pricing.environment', before: :load_config_initializers do |_app|
+      SpreeVolumePricing::Config = SpreeVolumePricing::Configuration.new
+    end
+
     initializer 'spree_volume_pricing.preferences', before: 'spree.environment' do
       Spree::AppConfiguration.class_eval do
         preference :use_master_variant_volume_pricing, :boolean, default: false

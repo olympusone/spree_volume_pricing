@@ -1,5 +1,6 @@
-require 'spree_api'
 require 'spree_core'
+require 'spree_api'
+require 'spree_backend'
 require 'spree_extension'
 require 'spree_volume_pricing/engine'
 require 'spree_volume_pricing/version'

@@ -1,3 +1,4 @@
+# encoding: UTF-8
 lib = File.expand_path('../lib/', __FILE__)
 $LOAD_PATH.unshift lib unless $LOAD_PATH.include?(lib)
 
@@ -9,20 +10,19 @@ Gem::Specification.new do |s|
   s.version     = SpreeVolumePricing.version
   s.summary     = 'Allow prices to be configured in quantity ranges for each variant'
   s.description = s.summary
-  s.required_ruby_version = '>= 2.7.3'
+  s.required_ruby_version = '>= 2.5'
 
   s.author       = 'OlympusOne'
   s.email        = 'info@olympusone.com.com'
   s.homepage     = 'https://github.com/olympusone/spree_volume_pricing'
-  s.license      = 'BSD-3'
+  s.license      = 'BSD-3-Clause'
 
   s.files       = `git ls-files`.split("\n").reject { |f| f.match(/^spec/) && !f.match(/^spec\/fixtures/) }
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  spree_version = '>= 4.3.1', '< 6.0'
-  s.add_dependency 'spree_core', spree_version
-  s.add_dependency 'spree_api', spree_version
+  spree_version = '>= 4.3.1'
+  s.add_dependency 'spree', spree_version
   s.add_dependency 'spree_backend', spree_version
   s.add_dependency 'spree_extension'
 
