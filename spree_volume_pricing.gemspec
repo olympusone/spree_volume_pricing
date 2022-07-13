@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 2.5'
 
   s.author       = 'OlympusOne'
-  s.email        = 'info@olympusone.com.com'
+  s.email        = 'info@olympusone.com'
   s.homepage     = 'https://github.com/olympusone/spree_volume_pricing'
   s.license      = 'BSD-3-Clause'
 
